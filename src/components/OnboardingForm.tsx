@@ -12,25 +12,6 @@ interface StepProps {
   onBack?: () => void;
 }
 
-const RoleSelection = ({ onNext }: StepProps) => (
-  <div className="space-y-6 animate-fadeIn">
-    <h2 className="text-2xl font-semibold mb-8">Choose your role</h2>
-    <button
-      onClick={onNext}
-      className="w-full p-6 border rounded-xl text-left hover:bg-secondary transition-all"
-    >
-      <div className="flex items-center justify-between">
-        <div>
-          <h3 className="font-medium text-lg">Educator</h3>
-          <p className="text-sm text-foreground/60 mt-1">
-            Share your knowledge and expertise
-          </p>
-        </div>
-        <ChevronRight className="w-5 h-5 text-foreground/40" />
-      </div>
-    </button>
-  </div>
-);
 
 const SpecializationStep = ({ onNext, onBack }: StepProps) => (
   <div className="space-y-6 step-content">
@@ -116,7 +97,7 @@ const SocialMediaStep = ({ onNext, onBack }: StepProps) => (
   <div className="space-y-6 step-content">
     <h2 className="text-2xl font-semibold mb-8">Connect your social media</h2>
     <div className="space-y-4">
-      {['LinkedIn', 'Twitter', 'Instagram'].map((platform) => (
+      {['LinkedIn', 'Twitter', 'Instagram', 'Youtube', 'Coursera', 'Udemy'].map((platform) => (
         <div key={platform} className="space-y-2">
           <Label className="form-label">{platform}</Label>
           <Input 
@@ -137,7 +118,7 @@ const PaymentStep = ({ onNext, onBack }: StepProps) => (
     <h2 className="text-2xl font-semibold mb-8">Set up payments</h2>
     <div className="space-y-4">
       <Label className="form-label">Payment methods</Label>
-      {['Bank Transfer', 'PayPal', 'Stripe'].map((method) => (
+      {['Bank Transfer', 'PayPal', 'Stripe', 'Paystack'].map((method) => (
         <label key={method} className="flex items-center p-4 border rounded-lg cursor-pointer hover:bg-secondary">
           <input type="radio" name="payment" className="w-5 h-5 mr-3" />
           <span>{method}</span>
@@ -155,7 +136,6 @@ const OnboardingForm = () => {
   const navigate = useNavigate();
 
   const steps = [
-    RoleSelection,
     SpecializationStep,
     ContentTypesStep,
     DescriptionStep,
